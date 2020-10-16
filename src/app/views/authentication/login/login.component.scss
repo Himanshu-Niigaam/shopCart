@@ -1,0 +1,96 @@
+@import "../../../../sass/main.scss";
+
+.container {
+  display: flex;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  @include font-size(28px);
+  @include letter-spacing(1px);
+  text-align: center;
+  color: $light;
+  text-transform: uppercase;
+  @include margin-bottom(22px);
+}
+
+.input-wrapper {
+  border: 1px solid $light-grey;
+  @include border-radius(5px);
+  @include padding(20px);
+}
+
+.input-username,
+.input-password {
+  @include margin-bottom(40px);
+}
+
+.error-msg {
+  @include padding-top(10px);
+  width: 95%;
+  color: $light;
+}
+
+.submit_btn {
+  @include letter-spacing(1px);
+  @include border-radius(5px);
+  background-image: linear-gradient(to bottom, $success, $btn-green-gradient);
+  @include padding(10px 15px);
+  color: $light;
+  text-transform: uppercase;
+  border: 1px solid $light-grey;
+  cursor: pointer;
+  width: 100%;
+  &:hover {
+    background: $btn-green-gradient;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.custom-input {
+  @include border-radius(5px);
+  @include padding(10px);
+  @include width(240px);
+  border: 1px solid $light-grey;
+  -webkit-transition: box-shadow linear 0.2s;
+  transition: box-shadow linear 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: 0 0 10px $primary;
+  }
+
+  &:hover {
+    border-color: $primary;
+    box-shadow: 0 0 10px $primary;
+  }
+}
+
+.left-half {
+  background-image: url(../../../../assets/images/shop.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #464646;
+  flex: 1;
+  @include padding(16px);
+}
+
+.right-half {
+  background-color: $yellow;
+  flex: 1;
+  @include padding(16px);
+  justify-content: center;
+}
+
+.white {
+  color: $light;
+}

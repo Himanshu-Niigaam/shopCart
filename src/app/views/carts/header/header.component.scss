@@ -1,0 +1,134 @@
+@import "../../../../sass/main.scss";
+
+.header-wrapper {
+  display: flex;
+  position: relative;
+}
+
+.logo {
+  width: 28%;
+}
+
+.wid78 {
+  width: 78%;
+}
+
+.pull-right {
+  float: right;
+}
+
+.row {
+  @include box-shadow(0 8px 6px -6px $gray-medium);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  justify-content: center;
+  @include padding(0 8px);
+  background: $light;
+}
+
+.user-column,
+.logo-column,
+.search-column {
+  background-color: $light;
+  @include padding(5px 20px);
+  text-align: right;
+
+  &.logo-column {
+    text-align: left;
+  }
+  &.search-column {
+    text-align: left;
+  }
+}
+
+form.search input[type="text"] {
+  @include padding(10px);
+  @include font-size(16px);
+  border: 1px solid $light-grey;
+  float: left;
+  width: 82%;
+  background: $light;
+  @include border-radius(5px 0 0 5px);
+  &:focus {
+    outline: none;
+  }
+}
+
+form.search button {
+  @include font-size(16px);
+  @include border-radius(0 5px 5px 0);
+  float: left;
+  width: 12%;
+  @include padding(10px);
+  background: $bg-grey;
+  color: $light;
+  border: 1px solid $light-grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.search::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.welcome {
+  @include font-size(12px);
+  font-weight: 500;
+  color: $gray-medium;
+  vertical-align: super;
+  @include padding(6px);
+}
+
+.fa-3x {
+  @include margin-right(10px);
+  color: $light-bg-grey;
+}
+
+.fa-angle-down {
+  float: right;
+  @include margin(8px 0 0 0);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  cursor: pointer;
+  @include width(112px);
+  position: absolute;
+  background-color: $light;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  top: 42px;
+  @include padding(10px);
+  right: 21px;
+  border: 1px solid $brdr;
+  @include font-size(12px);
+  @include border-radius(5px);
+}
+
+.cart-count {
+  @include font-size(12px);
+  font-weight: 500;
+  color: $gray-medium;
+  vertical-align: middle;
+  @include margin-left(8px);
+  font-family: roboto;
+}

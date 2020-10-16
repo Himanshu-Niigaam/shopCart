@@ -1,0 +1,85 @@
+<div class="filter-wrap">
+  <div class="info-wrap b-bottom">
+    <div class="name-listing">
+      <div>filters</div>
+    </div>
+    <div class="clear-all">
+      <span>reset filter</span>
+    </div>
+  </div>
+
+  <!-- Clear Link -->
+  <div class="clear-selection" title="Click to Clear Selections" (click)="clearSelection()" *ngIf="selected_count">Clear
+    Selection</div>
+
+  <!-- Filter List -->
+  <ul class="game-list">
+    <li *ngFor="let item of results | filter : searchText" class="game-item">
+
+      <div class="info-wrap">
+        <div class="name-listing">
+          <div>{{item.type}}</div>
+        </div>
+        <div class="clear-all" (click)="onSearch()" *ngIf="!search"><span><i aria-hidden="true"
+              class="fa fa-search srch"></i></span></div>
+      </div>
+
+
+      <div class="filter-info" *ngIf="item.type === 'BRAND'">
+
+        <div class="flex" *ngIf="search">
+          <input type="text" [(ngModel)]="searchText" class="filter-search" placeholder="Search" #search />
+          <span class="cross" (click)="clearFilter()">&times;</span>
+        </div>
+
+        <ng-container *ngFor="let data of item.values | slice:0:82 ">
+          <label>
+            <input (change)="getSelected(title)" type="checkbox" name="games" value="{{data.value}}"
+              [(ngModel)]="data.selected" />
+            <span class="game-text">{{data.title}}</span>
+          </label>
+        </ng-container>
+
+        <!-- <ng-container *ngIf="showMore">
+          <ng-container *ngFor="let data of item.values; let ndx = index">
+             <li *ngIf="ndx >= 5">{{ data.title }}</li>
+          </ng-container>
+       </ng-container> -->
+
+        <!-- <button (click)="showMore = true">Show more</button> -->
+      </div>
+
+      <div class="filter-info" *ngIf="item.type === 'COLOUR'">
+        <div class="flex" *ngIf="search">
+          <input type="text" [(ngModel)]="searchText" class="filter-search" placeholder="Search" #search />
+          <span class="cross" (click)="clearFilter()">&times;</span>
+        </div>
+        <ng-container *ngFor="let data of item.values">
+          <label>
+            <input (change)="getSelected(title)" type="checkbox" name="games" value="{{data.value}}"
+              [(ngModel)]="data.selected" />
+            <span class="game-text">{{data.title}}</span>
+          </label>
+        </ng-container>
+      </div>
+
+      <!-- <div class="more">
+        <ng-container *ngIf="results | filterShowMore">
+          <p class="hyperlk">+
+            {{results | filterShowMore}}
+            more</p>
+        </ng-container>
+      </div> -->
+    </li>
+
+
+  </ul>
+
+  <!-- Selected Games-->
+  <div class="selected-games-wrap">
+    <div class="selected-game" *ngFor="let s of selected_games">
+      <span>{{s.name}} <span class="delete-game" (click)="removeFilter(s.id)" title="Click to delete">X</span></span>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,34 @@
+// sCart Standard color codes
+$primary : #ee3441;
+$dark : #000000;
+$gray-dark: lighten($dark, 20%) !default;       // #333333
+$gray-medium: lighten($dark, 40%) !default;     // #666666
+$gray-lighter: lighten($dark, 60%) !default;    // #999999
+$gray-light: lighten($dark, 73.3%) !default;    // #bbbbbb
+$success : #79bf3d;
+$danger : #bf0210;
+$light : #ffffff;
+$blue : #349dee;
+$light-grey: #e5e5e5;
+$bg-grey: #464646;
+$light-bg-grey: #4c4c4c;
+$brdr: #ced0da;
+$light-black: #282c3f;
+$gray-opac: #535665;
+$gray-shaddy: #696e79;
+$orange: #ff5722;
+$black-shaddy: #363e44;
+$yellow: #b6701e;
+$snackbar-bg: #202124;
+
+// Buttons background second gradient color code 
+$btn-blue-gradient : #54a5dd;
+$btn-green-gradient : #559c01;
+$btn-gray-gradient : #464646;
+$btn-orange-gradient : #f67506;
+$btn-red-gradient : $danger;
+
+// Standard fonts size
+$font-html: 16px;
+$font-html-md: 14px;
+$font-html-sm: 12px;

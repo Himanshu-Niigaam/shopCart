@@ -1,0 +1,30 @@
+<section>
+  <div class="flex-container">
+    <ng-container *ngFor="let data of results">
+      <!-- Left side image section strarts from here -->
+      <div id="fleximg" class="col">
+        <img src="{{data ? data.image : ''}}"
+          onerror="this.onerror=null; this.src='assets/images/no_image_available_for_cat.png'">
+      </div>
+
+      <!-- Right side product description starts from here -->
+      <div id="desc" class="col">
+        <h1 class="brand"> {{data.brand}} </h1>
+        <p class="title">
+          {{data.title}}
+        </p>
+        <p class="price-container">
+          <span class="final-price"><strong>Rs. {{data.price.final_price}}</strong></span>
+          <span class="mrp"><del>Rs. {{data.price.mrp}}</del></span>
+          <span class="discount"> ({{data.discount}}&#37; OFF)</span>
+        </p>
+        <p class="title">
+          {{data.rating}}
+        </p>
+        <p class="title">
+          {{data.colour.title}}
+        </p>
+      </div>
+    </ng-container>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+@import "../../../sass/main.scss";
+
+.error-template {
+  @include padding(80px 15px);
+  text-align: center;
+  @include line-height(50px);
+}
+
+.error-actions {
+  @include margin(15px 0 15px 0);
+}
+
+.error-actions .btn {
+  @include margin-right(10px);
+}
+
+.error_btn {
+  background-image: linear-gradient(to bottom, $primary, $btn-red-gradient);
+  @include padding(10px 15px);
+  color: $light;
+  text-transform: uppercase;
+  border: 1px solid $brdr;
+  cursor: pointer;
+  width: 52%;
+  @include font-size(18px);
+  @include letter-spacing(1px);
+  @include margin-top(20px);
+  text-decoration: none;
+  @include border-radius(3px);
+  &:hover {
+    background: $btn-red-gradient;
+  }
+}

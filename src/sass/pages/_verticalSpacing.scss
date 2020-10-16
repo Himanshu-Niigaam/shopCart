@@ -1,0 +1,39 @@
+// Global standard vertical spacing classes for whole project
+// vertical spacing between two different sections
+.vertical-section-spacing-XXL {
+    @include margin-bottom(50px);
+    @media #{$tablet} {
+        @include margin-bottom(70px);
+    }
+}
+
+// vertical spacing between modules in the same section
+.vertical-module-spacing-XL {
+    @include margin-bottom(30px);
+    @media #{$tablet} {
+        @include margin-bottom(50px);
+    }
+}
+
+// vertical spacing between cards
+.vertical-cards-spacing-L {
+    @include margin-bottom(20px);
+    @media #{$tablet} {
+        @include margin-bottom(40px);
+    }
+}
+
+// vertical spacing between forms between title and bodytext in paragraph view
+.vertical-form-title-text-spacing-m {
+    @include margin-bottom(20px);
+}
+
+// vertical spacing between title and bodytext inside component
+.vertical-component-title-text-spacing-s {
+    @include margin-bottom(10px);
+}
+
+// spacing between headline and bodytext
+.vertical-headline-bodytext-spacing-xs {
+    @include margin-bottom(5px);
+}

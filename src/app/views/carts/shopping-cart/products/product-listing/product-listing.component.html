@@ -1,0 +1,72 @@
+<section class="product-listing">
+    <ul class="product-listing__cards cards-item-grid">
+        <!-- This block shows by default existing products -->
+        <ng-template #elseBlock>
+            <li class="product-listing__cards-item" *ngFor="let data of results">
+                <div class="product-listing__card">
+                    <!-- Card image section starts from here -->
+                    <div class="image-wrapper" routerLink="/sCart/product-detail/{{data.id}}">
+                        <img src="{{data ? data.image : ''}}"
+                            onerror="this.onerror=null; this.src='assets/images/no_image_available_for_cat.png'">
+                        <div class="discount"><span>{{data.discount}}&#37;</span></div>
+                    </div>
+
+                    <!-- cards description startd from here -->
+                    <div class="product-listing__card-content product-text">
+                        <p class="product-text--product-brand">{{data.brand}}</p>
+                        <p class="product-text--product-title">{{data.title}}</p>
+
+                        <p class="product-text--product-price">Rs. {{data.price.final_price}}</p>
+                        <div class="color-wrap">
+                            <span class="color-text">color</span>
+                            <span class="square" [ngStyle]="{'background-color':data.colour.color}">&nbsp;</span>
+                        </div>
+                        <span (click)="addToCart(data)" class="add-to-cart"><i class="fa fa-plus-circle"></i> Add</span>
+
+                    </div>
+                </div>
+                <!-- Loader starts from here -->
+                <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+                    <p class="white">Please Wait.</p>
+                </ngx-spinner>
+            </li>
+        </ng-template>
+
+        <!-- This block will show when you perform any search -->
+        <ng-container *ngIf="searchResults && searchResults.length > 0; else elseBlock">
+            <li class="product-listing__cards-item" *ngFor="let data of searchResults">
+                <div class="product-listing__card">
+                    <!-- Card image section starts from here -->
+                    <div class="image-wrapper" routerLink="/sCart/product-detail/{{data.id}}">
+                        <img src="{{data ? data.image : ''}}"
+                            onerror="this.onerror=null; this.src='assets/images/no_image_available_for_cat.png'">
+                        <div class="discount"><span>{{data.discount}}&#37;</span></div>
+                    </div>
+
+                    <!-- cards description startd from here -->
+                    <div class="product-listing__card-content product-text">
+                        <p class="product-text--product-brand">{{data.brand}}</p>
+                        <p class="product-text--product-title">{{data.title}}</p>
+
+                        <p class="product-text--product-price">Rs. {{data.price.final_price}}</p>
+                        <div class="color-wrap">
+                            <span class="color-text">color</span>
+                            <span class="square" [ngStyle]="{'background-color':data.colour.color}">&nbsp;</span>
+                        </div>
+                        <span (click)="addToCart(data)" class="add-to-cart"><i class="fa fa-plus-circle"></i> Add</span>
+
+                    </div>
+                </div>
+                <!-- Loader starts from here -->
+                <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+                    <p class="white">Please Wait.</p>
+                </ngx-spinner>
+            </li>
+        </ng-container>
+
+        <!-- <div class="suggestion" 
+     *ngIf="searchArrLength === 0">
+     <h1> No results found </h1>
+</div> -->
+    </ul>
+</section>

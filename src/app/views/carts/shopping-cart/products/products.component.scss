@@ -1,0 +1,21 @@
+@import "../../../../../sass/main.scss";
+
+.product-wrapper {
+  @include padding(20px);
+  @include margin-top(70px);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-3 {
+  flex: 0 0 16%;
+  max-width: 16%;
+}
+
+.col-9 {
+  flex: 0 0 84%;
+  max-width: 84%;
+}

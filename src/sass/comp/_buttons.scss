@@ -1,0 +1,15 @@
+@mixin btn-gray {
+  @include letter-spacing(0.26px);
+  @include margin-top(10px);
+  border: 1px solid #ced0da;
+  line-height: 32px;
+  width: 120px;
+  height: 32px;
+  border-radius: 5px;
+  color: $light;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+}

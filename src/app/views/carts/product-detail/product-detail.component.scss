@@ -1,0 +1,71 @@
+@import "../../../../sass/main.scss";
+
+.flex-container {
+  display: flex;
+  margin: 16%;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $light-grey;
+  @include border-radius(5px);
+}
+
+#fleximg {
+  flex-basis: 40%;
+  display: flex;
+  justify-content: center;
+}
+
+#desc {
+  flex-basis: 60%;
+  @include padding(100px 10px);
+  align-items: center;
+}
+
+.brand {
+  color: $light-black;
+  @include padding(0 20px 0 0);
+  @include font-size(24px);
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.title {
+  color: $gray-opac;
+  @include padding(5px 20px 14px 0);
+  @include font-size(20px);
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+.price-container {
+  color: $gray-shaddy;
+  @include font-size(14px);
+  @include margin(14px 0 5px 0);
+  display: inline-block;
+}
+
+.final-price {
+  @include font-size(24px);
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  color: $light-black;
+  @include margin-right(12px);
+}
+
+.mrp {
+  @include height(22px);
+  opacity: 0.8;
+  @include font-size(20px);
+  line-height: 1.2;
+  color: $light-black;
+  @include margin-right(12px);
+}
+
+.discount {
+  @include font-size(20px);
+  font-weight: 500;
+  @include letter-spacing(0.5px);
+  color: $orange;
+}

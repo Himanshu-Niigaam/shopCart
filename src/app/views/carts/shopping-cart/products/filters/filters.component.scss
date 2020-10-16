@@ -1,0 +1,191 @@
+@import "../../../../../../sass/main.scss";
+
+.filter-wrap {
+  background-color: $light;
+  border: 1px solid $light-grey;
+  margin-bottom: 10px;
+  float: left;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.b-bottom {
+  border-bottom: 1px solid $light-grey;
+}
+
+.info-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name-listing {
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.name-listing div,
+.clear-all {
+  color: $gray-dark;
+  @include letter-spacing(0.26px);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 25px;
+
+  span {
+    color: $blue;
+    // @media (min-width: 40rem) {
+    //   display: none;
+    // }
+  }
+}
+
+.clear-all {
+  padding: 10px 15px;
+
+  span {
+    color: $blue;
+    cursor: pointer;
+  }
+}
+
+.list-wrap {
+  border-top: 1px solid $light-grey;
+
+  ul {
+    list-style: none;
+    padding: 10px 15px;;
+    margin: 0;
+  }
+
+  li {
+    font-size: 14px;
+    margin-bottom: 7px;
+  }
+} 
+
+.cross {
+  position: absolute;
+  z-index: 999;
+  font-size: 22px;
+  color: #545865;
+  right: 22px;
+  cursor: pointer;
+  top: 94px;
+}
+
+.heading {
+  color: $gray-dark;
+  font-weight: 600;
+  @include font-size(14px);
+  padding: 0 15px;
+}
+
+.filter-search {
+  width: 82% !important;
+  margin: 0 0 15px 15px;
+  padding: 5px;
+  border: 1px solid $light-grey;
+  border-radius: 5px;
+}
+
+.filter-info {
+  @include margin-top(5px);
+  border-bottom: 1px solid $light-grey;
+
+label {
+  display: block;
+  padding: 0 15px 10px;
+}
+}
+
+.filter-input{
+  font-size:14px;
+  padding:5px;
+  border-radius:3px;
+  border:2px solid #ccc;
+  margin-bottom:5px;
+  padding-right: 30px;
+}
+
+.clear-selection {
+    font-size: 12px;
+    font-weight: bold;
+    color: red;
+    cursor: pointer;
+    position: absolute;
+}
+
+.game-list {
+  padding: 0;
+  margin: 0;
+}
+
+li.game-item {
+    list-style: none;
+    font-size: 12px;
+    cursor: pointer;
+
+    // @media (min-width: 40rem) {
+    //   font-size: 10px;
+    // }
+}
+
+li.game-item input{
+    height: 16px;
+    width: 16px;
+    // @media (min-width: 40rem) {
+    //   height: 10px;
+    // width: 10px;
+    // }
+}
+
+.game-text{
+  vertical-align: middle;
+  padding-left: 10px;
+  position: relative;
+  bottom: 4px;
+  color: $gray-medium;
+  font-weight: 600;
+  @include letter-spacing (0.3px);
+
+  // @media (min-width: 40rem) {
+  //   white-space: break-spaces;
+  //   display: inline-block;
+  // }
+}
+
+.selected-game {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 24px;
+    background: #B9CFEA;
+    margin-bottom: 10px;
+    padding: 2px 11px 4px 11px;
+    border-radius: 8px;
+}
+
+.delete-game{
+    font-size: 13px;
+    padding: 3px 6px;
+    vertical-align:middle;
+    cursor:pointer;
+}
+.delete-game:hover{
+    background: #99ABC1;
+    padding: 3px 6px;
+    border-radius: 15px;
+}
+
+.filter-wrap{
+  position:relative ;
+ 
+}
+
+.filter-clear{
+    position: absolute;
+    margin-left: -24px;
+    margin-top: 11px;
+    cursor:pointer;
+}
