@@ -16,9 +16,9 @@ export class FilterTypeComponent implements OnInit {
   arr = [];
   isSelectAll: boolean = false;
   expand = true;
-  filterList;
-  resultArr;
-  subscription;
+  filterList: any;
+  resultArr: any;
+  subscription: any;
   constructor(
     private cartservice: SCartService,
   ) { }
@@ -31,7 +31,6 @@ export class FilterTypeComponent implements OnInit {
     if (this.heading === "BRAND")
       this.subscription = this.cartservice.brands.pipe().subscribe((ele) => {
         this.filterList = ele;
-        console.log(this.filterList);
         this.resultArr = ele;
         return ele;
       });
@@ -39,8 +38,6 @@ export class FilterTypeComponent implements OnInit {
     if (this.heading === "COLOUR")
       this.subscription = this.cartservice.colors.pipe().subscribe((ele) => {
         this.filterList = ele;
-        console.log(this.filterList);
-
         this.resultArr = ele;
         return ele;
       });
@@ -48,8 +45,6 @@ export class FilterTypeComponent implements OnInit {
     if (this.heading === "PRICE")
       this.subscription = this.cartservice.price.pipe().subscribe((ele) => {
         this.filterList = ele;
-        console.log(this.filterList);
-
         this.resultArr = ele;
         return ele;
       });
@@ -95,7 +90,7 @@ export class FilterTypeComponent implements OnInit {
   clearAll = () => {
     this.arr = [];
     this.isSelectAll = false;
-    this.inputFns.inputFns.onClickHandler(this.heading, this.arr);
+    // this.inputFns.onClickHandler(this.heading, this.arr);
     this.clearSearch();
     this.cartservice.clearAll.next(false);
   }
@@ -103,32 +98,28 @@ export class FilterTypeComponent implements OnInit {
   selectAll() {
     // this.clearCheckboxes();
 
-    // if (this.isSelectAll) {
-    //   for (let i = 0; i < this.resultArr.length; i++) {
-    //     let index = this.arr.indexOf(this.resultArr[i]["key"]);
-    //     if (index >= 0) {
-    //       this.arr.splice(index, 1);
-    //     }
-    //   }
-    //   this.isSelectAll = false;
-    //   // this.fetchData();
+    if (this.isSelectAll) {
+      for (let i = 0; i < this.resultArr.length; i++) {
+        let index = this.arr.indexOf(this.resultArr[i]["title"]);
+        if (index >= 0) {
+          this.arr.splice(index, 1);
+        }
+      }
+      this.isSelectAll = false;
 
-    //   return false;
-    // } else if (!this.isSelectAll) {
-    //   for (let i = 0; i < this.resultArr.length; i++) {
-    //     if (this.arr.indexOf(this.resultArr[i]["key"]) >= 0) continue;
-    //     else this.arr.push(this.resultArr[i]["key"]);
-    //   }
-    //   this.isSelectAll = true;
-    //   // this.fetchData();
-    //   return false;
-    // }
+      return false;
+    } else if (!this.isSelectAll) {
+      for (let i = 0; i < this.resultArr.length; i++) {
+        if (this.arr.indexOf(this.resultArr[i]["title"]) >= 0) continue;
+        else this.arr.push(this.resultArr[i]["title"]);
+      }
+      this.isSelectAll = true;
+      return false;
+    }
   }
 
   clear = () => {
     this.clearAll();
-    // this.fetchData();
-    // this.clearCheckboxes();
   };
 
   render = (i) => {
@@ -136,21 +127,9 @@ export class FilterTypeComponent implements OnInit {
     return false;
   };
 
-  // showMore = () => {
-  //   this.dialog.open(ShowMoreFilterComponent, {
-  //     width: "800px",
-  //     height: "auto",
-  //     data: { inputFns: this },
-  //     scrollStrategy: new NoopScrollStrategy(),
-  //   });
-  // };
-
-
   onClickHandler(id, value) {
     console.log(id);
     console.log(value);
-
-    // this.clearCheckboxes();
 
     if (value) {
       if (this.arr.indexOf(id) != -1) {
@@ -164,6 +143,7 @@ export class FilterTypeComponent implements OnInit {
       if (this.arr.indexOf(id) != -1) {
         let index = this.arr.indexOf(id);
         this.arr.splice(index, 1);
+        console.log(this.arr);
       } else {
         return;
       }

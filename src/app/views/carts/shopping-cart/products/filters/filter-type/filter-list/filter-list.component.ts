@@ -11,18 +11,19 @@ export class FilterListComponent implements OnInit {
 
   checked: boolean = false;
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
   }
 
   check() {
     this.checked = !this.checked;
-    this.inputFns.onClickHandler(this.item.value, this.checked);
+    this.inputFns.onClickHandler(this.item.title, this.checked);
   }
 
   hasId() {
-    if (this.inputFns.arr.indexOf(this.item.value) >= 0) {
+    if (this.inputFns.arr.indexOf(this.item.title) >= 0) {
       this.checked = true;
       return true;
     } else {

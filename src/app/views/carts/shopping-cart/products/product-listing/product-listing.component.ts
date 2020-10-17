@@ -43,7 +43,6 @@ export class ProductListingComponent implements OnInit {
     this.cartservice.getProducts().subscribe((resData: any) => {
       this.spinner.hide();
       this.results = resData;
-      this.prodId = resData.id;
       this.prodArrLength = resData.length;
     });
   }

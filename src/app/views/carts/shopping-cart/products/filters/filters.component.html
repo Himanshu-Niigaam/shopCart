@@ -92,7 +92,7 @@
 <div class="filter-wrap">
   <div class="info-wrap b-bottom">
     <p class="name-listing"><strong>FILTER BY</strong></p>
-    <p class="clear-all" *ngIf="clearAllText | async" (click)="clearAll(true)"><strong>CLEAR ALL</strong></p>
+    <p class="clear-all" *ngIf="(clearAllText$)" (click)="clearAll(true)"><strong>CLEAR ALL</strong></p>
   </div>
   <app-filter-type [inputFns]="this" [heading]="'BRAND'" #mul1></app-filter-type>
   <app-filter-type [inputFns]="this" [heading]="'COLOUR'" #mul2></app-filter-type>

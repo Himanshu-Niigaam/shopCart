@@ -19,8 +19,6 @@ export class ProductsComponent implements OnInit {
     this.cartservice.getFilters().subscribe((resdata) => {
       this.result = resdata;
       console.log(this.result);
-      // this.filterDataSeparate(this.result.values);
-      console.log(this.result);
     })
   }
 }

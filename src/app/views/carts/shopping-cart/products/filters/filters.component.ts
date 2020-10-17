@@ -20,7 +20,8 @@ export class FiltersComponent implements OnInit {
   child2: FilterTypeComponent;
   @ViewChild("mul3", { static: false })
   child3: FilterTypeComponent;
-  clearAllText: Observable<any>;
+
+  clearAllText$: Observable<any>;
 
   constructor(
     private cartservice: SCartService,
@@ -28,7 +29,9 @@ export class FiltersComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.clearAllText$ = this.cartservice.clearAll.pipe();
+  }
 
   clearAll = (clear) => {
     this.child1.clearAll();

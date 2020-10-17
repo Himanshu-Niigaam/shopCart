@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { API } from "../../utils/api.constant";
-import { BehaviorSubject, Observable, of, throwError } from "rxjs";
+import { BehaviorSubject, Observable, of, throwError, Subject } from "rxjs";
 import { take, map } from "rxjs/operators";
 import { retry, catchError } from "rxjs/operators";
 import { Product } from "./../interface-type/types";
@@ -15,7 +15,7 @@ export class SCartService {
   brands = new BehaviorSubject([]);
   colors = new BehaviorSubject([]);
   price = new BehaviorSubject([]);
-  clearAll = new BehaviorSubject(false);
+  clearAll = new Subject();
 
   constructor(private http: HttpClient) {
     // Check if cart product exist in localstorage or not to manage the state after refresh

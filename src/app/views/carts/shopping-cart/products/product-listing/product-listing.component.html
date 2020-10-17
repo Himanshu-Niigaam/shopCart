@@ -69,4 +69,10 @@
      <h1> No results found </h1>
 </div> -->
     </ul>
+
+    <div class="notFound" *ngIf="!searchArrLength">
+        <img src="assets/images/no-result.png" alt="No Results Found">
+        <p class="text1">No Matching Results Found!</p>
+        <p class="text2">Please check the spelling or try searching something else</p>
+      </div>
 </section>
