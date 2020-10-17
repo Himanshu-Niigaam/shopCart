@@ -12,6 +12,10 @@ import { Product } from "./../interface-type/types";
 export class SCartService {
   public searchResults: any;
   private searchTerm = new BehaviorSubject([]);
+  brands = new BehaviorSubject([]);
+  colors = new BehaviorSubject([]);
+  price = new BehaviorSubject([]);
+  clearAll = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) {
     // Check if cart product exist in localstorage or not to manage the state after refresh
@@ -106,7 +110,15 @@ export class SCartService {
       Expires: "0",
     });
     let requestOptions = { headers: headerOptions };
-    return this.http.get(API.FILTERS, requestOptions);
+    return this.http.get(API.FILTERS, requestOptions).pipe(
+      map((response: any) => {
+        console.log(response);
+        this.brands.next(response[0].values);
+        this.colors.next(response[1].values);
+        this.price.next(response[2].values);
+        return (this.searchResults = response["results"]);
+      })
+    );;
   }
 
   // getSearchResult(title: any): Observable<any> {
@@ -116,7 +128,7 @@ export class SCartService {
   // }
 
   public getResults$() {
-    return this.searchTerm.asObservable();
+    return this.searchTerm.asObservable()
   }
 
   // This function is used to get search result data from api

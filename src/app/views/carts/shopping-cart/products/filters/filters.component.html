@@ -1,4 +1,4 @@
-<div class="filter-wrap">
+<!-- <div class="filter-wrap">
   <div class="info-wrap b-bottom">
     <div class="name-listing">
       <div>filters</div>
@@ -6,13 +6,15 @@
     <div class="clear-all">
       <span>reset filter</span>
     </div>
-  </div>
+  </div> -->
 
-  <!-- Clear Link -->
-  <div class="clear-selection" title="Click to Clear Selections" (click)="clearSelection()" *ngIf="selected_count">Clear
+
+  
+  
+
+  <!-- <div class="clear-selection" title="Click to Clear Selections" (click)="clearSelection()" *ngIf="selected_count">Clear
     Selection</div>
 
-  <!-- Filter List -->
   <ul class="game-list">
     <li *ngFor="let item of results | filter : searchText" class="game-item">
 
@@ -40,13 +42,13 @@
           </label>
         </ng-container>
 
-        <!-- <ng-container *ngIf="showMore">
+        <ng-container *ngIf="showMore">
           <ng-container *ngFor="let data of item.values; let ndx = index">
              <li *ngIf="ndx >= 5">{{ data.title }}</li>
           </ng-container>
-       </ng-container> -->
+       </ng-container>
 
-        <!-- <button (click)="showMore = true">Show more</button> -->
+        <button (click)="showMore = true">Show more</button>
       </div>
 
       <div class="filter-info" *ngIf="item.type === 'COLOUR'">
@@ -63,23 +65,36 @@
         </ng-container>
       </div>
 
-      <!-- <div class="more">
+      <div class="more">
         <ng-container *ngIf="results | filterShowMore">
           <p class="hyperlk">+
             {{results | filterShowMore}}
             more</p>
         </ng-container>
-      </div> -->
+      </div>
     </li>
 
 
   </ul>
 
-  <!-- Selected Games-->
   <div class="selected-games-wrap">
     <div class="selected-game" *ngFor="let s of selected_games">
       <span>{{s.name}} <span class="delete-game" (click)="removeFilter(s.id)" title="Click to delete">X</span></span>
     </div>
-  </div>
+  </div> -->
 
+<!-- </div> -->
+
+
+
+
+
+<div class="filter-wrap">
+  <div class="info-wrap b-bottom">
+    <p class="name-listing"><strong>FILTER BY</strong></p>
+    <p class="clear-all" *ngIf="clearAllText | async" (click)="clearAll(true)"><strong>CLEAR ALL</strong></p>
+  </div>
+  <app-filter-type [inputFns]="this" [heading]="'BRAND'" #mul1></app-filter-type>
+  <app-filter-type [inputFns]="this" [heading]="'COLOUR'" #mul2></app-filter-type>
+  <app-filter-type [inputFns]="this" [heading]="'PRICE'" #mul3></app-filter-type>
 </div>

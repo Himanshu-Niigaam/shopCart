@@ -1,0 +1,36 @@
+.gry {
+    color: #AAAAAA;
+  }
+  
+  .list {
+    display: flex;
+    flex-direction: row;
+    height: 25px;
+    grid-template-columns: 10% 90%;
+  }
+  
+  .flex {
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    padding-left: 10px;
+  }
+  
+  mat-checkbox {
+    margin-right: 10px;
+  }
+  
+  .ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: calc(100% - 58px);
+    height: 100%;
+    color: #666666;
+  }
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+  

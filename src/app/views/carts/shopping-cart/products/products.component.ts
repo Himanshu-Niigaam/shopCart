@@ -12,15 +12,15 @@ export class ProductsComponent implements OnInit {
   constructor(private cartservice: SCartService) {}
 
   ngOnInit(): void {
-    // this.getProductFilters();
+    this.getProductFilters();
   }
 
-  // getProductFilters() {
-  //   this.cs.getFilters().subscribe((resdata) => {
-  //     this.result = resdata;
-  //     console.log(this.result.values);
-  //     this.filterDataSeparate(this.result.values);
-  //     console.log(this.result);
-  //   })
-  // }
+  getProductFilters() {
+    this.cartservice.getFilters().subscribe((resdata) => {
+      this.result = resdata;
+      console.log(this.result);
+      // this.filterDataSeparate(this.result.values);
+      console.log(this.result);
+    })
+  }
 }

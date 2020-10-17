@@ -1,0 +1,177 @@
+.fltrTp,
+.selectAll {
+  display: flex;
+  flex-direction: row;
+  min-height: 25px;
+  margin-top: 10px;
+  justify-content: space-between;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  div:nth-child(1) {
+    display: flex;
+    flex-direction: row;
+
+    p {
+      color: #00a9e1;
+      font-weight: 500;
+    }
+  }
+}
+
+.selectAll {
+  height: 25px;
+}
+
+.search {
+  cursor: pointer;
+  padding-left: 12px;
+}
+
+mat-checkbox {
+  margin-right: 10px;
+}
+
+.clrdrk {
+  color: #333333;
+  cursor: pointer;
+  width: 90%;
+}
+
+.srch {
+  color: #666666;
+  box-shadow: 0px 0px 15px lightgrey;
+  border-radius: 50%;
+  font-size: 14px;
+  background-color: #F3F3F3;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.form-control {
+  padding: .375rem .75rem;
+  height: calc(1.5em + 0.5rem);
+  margin-top: 6px;
+  width: 100%;
+  background: #f5f5f5;
+  color: #666666;
+  font-size: 12px;
+  border: none;
+  position: relative;
+  padding-right: 30px;
+}
+
+.form-control:focus {
+  border: 1px solid #37A9E1;
+}
+
+.cross {
+  position: absolute;
+  z-index: 1;
+  font-size: 27px;
+  color: #545865;
+  right: 9px;
+  cursor: pointer;
+  top: 3px;
+}
+
+.hyperlk {
+  color: #00a9e1;
+  font-weight: 500;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.fltrList {
+  max-height: 120px;
+  overflow: hidden;
+}
+
+.more {
+  margin-left: 10%;
+  margin-top: 5px;
+}
+
+
+.list {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0px 15px 15px 15px;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 25px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(141, 140, 140);
+}
+
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #676767;
+  opacity: 1;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #676767;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #676767;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #676767;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #676767;
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #676767;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #676767;
+}
+
+
+
+.select-all {
+   
+}
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+

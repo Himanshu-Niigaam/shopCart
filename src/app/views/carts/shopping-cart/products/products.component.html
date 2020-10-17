@@ -2,7 +2,7 @@
     <div class="row">
         <!-- Filter selector include here -->
         <div class="col-3">
-            <app-filters></app-filters>
+            <app-filters #filters [inputFns]="this"></app-filters>
         </div>
 
         <!-- Product list selector include here -->
