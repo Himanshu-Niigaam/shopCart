@@ -1,7 +1,7 @@
 <div class="list">
-    <input type="checkbox" />
-    <div class="flex">
+    <input type="checkbox" [checked]="hasId()" (change)="check()" />
+    <div class="flex" (click)="check()">
       <p class="ellipsis">
-        {{item.title}}</p>
+        {{item.value}}</p>
     </div>
   </div>

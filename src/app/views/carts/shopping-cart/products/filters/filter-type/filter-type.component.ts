@@ -145,4 +145,37 @@ export class FilterTypeComponent implements OnInit {
   //   });
   // };
 
+
+  onClickHandler(id, value) {
+    console.log(id);
+    console.log(value);
+
+    // this.clearCheckboxes();
+
+    if (value) {
+      if (this.arr.indexOf(id) != -1) {
+        return;
+      } else {
+        this.arr.push(id);
+        this.onFilterTitle();
+        console.log(this.arr);
+      }
+    } else if (!value) {
+      if (this.arr.indexOf(id) != -1) {
+        let index = this.arr.indexOf(id);
+        this.arr.splice(index, 1);
+      } else {
+        return;
+      }
+    }
+
+  }
+
+  onFilterTitle() {
+    let dataObjId = this.arr;
+    this.cartservice._searchProductsByName(dataObjId).subscribe((res)=> {
+      console.log(res);
+    });
+  }
+
 }

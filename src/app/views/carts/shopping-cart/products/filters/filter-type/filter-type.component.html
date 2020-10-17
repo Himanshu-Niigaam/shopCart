@@ -21,8 +21,8 @@
           <p *ngIf="arr.length > 0" class="hyperlk col2" (click)="clear()">Clear</p>
         </div>
         <div class="fltrList">
-          <ng-container *ngFor="let item of result; let i = index; ">
-            <app-filter-list *ngIf="render(i)" [item]="item" [inputFns]="this"></app-filter-list>
+          <ng-container *ngFor="let item of result;">
+            <app-filter-list  [item]="item" [inputFns]="this"></app-filter-list>
           </ng-container>
         </div>
         <!-- <div class="more">
