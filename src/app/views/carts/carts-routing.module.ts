@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HeaderComponent } from "./header/header.component";
+import { AuthGuard } from "./../../core/guard/auth.guard";
 
 const routes: Routes = [
   {
@@ -13,14 +14,7 @@ const routes: Routes = [
           import("./shopping-cart/shopping-cart.module").then(
             (m) => m.ShoppingCartModule
           ),
-      },
-
-      {
-        path: "sCart",
-        loadChildren: () =>
-          import("./shopping-cart/shopping-cart.module").then(
-            (m) => m.ShoppingCartModule
-          ),
+          canActivate: [AuthGuard],
       },
     ],
   },

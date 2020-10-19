@@ -1,9 +1,12 @@
 <div class="list">
-    <input type="checkbox" [checked]="hasId()" (change)="check()" />
-    <div class="flex" (click)="check()">
-      <p class="ellipsis">
-        {{item.title}}</p>
-      <p class="ellipsis">
-        {{item.key}}</p>
-    </div>
+  <!-- show checkbox -->
+  <input type="checkbox" [checked]="hasId()" (change)="check()" />
+
+  <!-- filter name section to get dynamic list -->
+  <div class="flex-wrap" (click)="check()">
+    <p class="ellipsis">
+      {{item.title}}</p>
+    <p class="ellipsis">
+      {{item.key}}</p>
   </div>
+</div>

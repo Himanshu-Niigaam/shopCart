@@ -1,36 +1,38 @@
-.gry {
-    color: #AAAAAA;
-  }
-  
-  .list {
-    display: flex;
-    flex-direction: row;
-    height: 25px;
-    grid-template-columns: 10% 90%;
-  }
-  
-  .flex {
-    display: flex;
-    width: 100%;
-    cursor: pointer;
-    padding-left: 10px;
-  }
-  
-  mat-checkbox {
-    margin-right: 10px;
-  }
-  
-  .ellipsis {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    max-width: calc(100% - 58px);
-    height: 100%;
-    color: #666666;
-  }
+@import "../../../../../../../../sass/main.scss";
 
-  input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
+.list {
+  display: flex;
+  flex-direction: row;
+  @include height(25px);
 }
-  
+
+.flex-wrap {
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  @include padding-left(10px);
+}
+
+.ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: calc(100% - 58px);
+  height: 100%;
+  color: $gray-medium;
+
+  @media #{$tablet-only} {
+    max-width: 100%;
+    @include font-size(12px);
+  }
+}
+
+input[type="checkbox"] {
+  @include width(16px);
+  @include height(16px);
+
+  @media #{$tablet-only} {
+    @include width(13px);
+    @include height(13px);
+  }
+}

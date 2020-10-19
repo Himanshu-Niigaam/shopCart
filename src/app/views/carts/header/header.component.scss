@@ -11,6 +11,9 @@
 
 .wid78 {
   width: 96%;
+  @media #{$tablet-only} { 
+    width: 92%;
+   }
 }
 
 .pull-right {
@@ -35,6 +38,10 @@
   justify-content: center;
   @include padding(0 8px);
   background: $light;
+
+  @media #{$tablet-only} { 
+    @include padding(5px 8px);
+  }
 }
 
 .user-column,
@@ -76,6 +83,9 @@ form.search button {
   border: 1px solid $light-grey;
   border-left: none;
   cursor: pointer;
+  @media #{$tablet-only} { 
+    width: 18%;
+  }
 }
 
 form.search::after {

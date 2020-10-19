@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { SCartService } from "../../../core/services/s-cart.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-product-detail",
@@ -12,9 +13,9 @@ export class ProductDetailComponent implements OnInit {
   results: any;
 
   constructor(
-    private router: Router,
     private route: ActivatedRoute,
-    private cartservice: SCartService
+    private cartservice: SCartService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -25,7 +26,9 @@ export class ProductDetailComponent implements OnInit {
 
   // Get product detail data from api
   getDataFromId() {
+    this.spinner.show();
     return this.cartservice.getDetail(this.uid).subscribe((res) => {
+      this.spinner.hide();
       this.results = res;
     });
   }

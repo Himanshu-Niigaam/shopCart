@@ -14,7 +14,7 @@
                         <input placeholder="Enter your username" formControlName="username"
                             [ngClass]="{ 'is-invalid': submitted && f.username.errors }" class="custom-input" />
                         <span *ngIf="submitted && f.username.errors" class="error-msg">
-                            <span *ngIf="f.username.errors.required">Username is required</span>
+                            <span *ngIf="f.username.errors.required">{{valUser}}</span>
                         </span>
                     </div>
 
@@ -23,15 +23,10 @@
                         <input placeholder="Enter your password" formControlName="password"
                             [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class="custom-input" />
                         <span *ngIf="submitted && f.password.errors" class="error-msg">
-                            <span *ngIf="f.password.errors.required">Password is required</span>
+                            <span *ngIf="f.password.errors.required">{{valPass}}</span>
                         </span>
                     </div>
-                    <button type="submit" class="submit_btn">login</button>
-
-                    <!-- Loader section -->
-                    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
-                        <p class="white">Please Wait.</p>
-                    </ngx-spinner>
+                    <button class="submit_btn">login</button>
                 </div>
             </form>
         </article>

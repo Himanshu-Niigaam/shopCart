@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
 import { SCartService } from "../../../../../../core/services/s-cart.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
-  selector: 'app-filter-type',
-  templateUrl: './filter-type.component.html',
-  styleUrls: ['./filter-type.component.scss']
+  selector: "app-filter-type",
+  templateUrl: "./filter-type.component.html",
+  styleUrls: ["./filter-type.component.scss"],
 })
 export class FilterTypeComponent implements OnInit {
   @ViewChild("search", { static: false }) _el: ElementRef;
@@ -12,21 +13,23 @@ export class FilterTypeComponent implements OnInit {
   @Input() heading;
   search = false;
   searchText;
-
   arr = [];
   isSelectAll: boolean = false;
   expand = true;
   filterList: any;
   resultArr: any;
   subscription: any;
+
   constructor(
     private cartservice: SCartService,
-  ) { }
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.initalizeFilters();
   }
 
+  // get filter list from api using behavioursubject
   initalizeFilters = () => {
     if (this.heading === "BRAND")
       this.subscription = this.cartservice.brands.pipe().subscribe((ele) => {
@@ -50,54 +53,38 @@ export class FilterTypeComponent implements OnInit {
       });
   };
 
-  onSearch = () => {
+  // show in-built searchbar to click on this function
+  onSearch() {
     this.search = true;
     this.expand = true;
     setTimeout(() => {
       this._el.nativeElement.focus();
     }, 0);
-  };
+  }
 
+  // to expand and collapse filter section
   expandFn = () => {
     this.expand = !this.expand;
   };
 
-  onKey = (event, resultArr) => {
-    // this.resultArr = [];
-    // for (let i = 0; i < resultArr.length; i++) {
-    //   this.resultArr.push(resultArr[i]);
-    // }
-
-    // //select all
-    // let flag = true;
-    // for (let i = 0; i < this.resultArr.length; i++) {
-    //   if (this.arr.indexOf(this.resultArr[i]["key"]) < 0) flag = false;
-    // }
-    // if (!flag) this.isSelectAll = false;
-    // else if (flag && this.resultArr.length) this.isSelectAll = true;
-
-    // if (event.target.value !== "") {
-    //   this.cartservice.clearAll.next(true);
-    // }
-  };
-
+  // this function clear checkboxes individual filters
   clearSearch() {
     this.searchText = "";
     this.search = false;
     this.isSelectAll = false;
   }
 
+  // this function clears all checkboxes
   clearAll = () => {
     this.arr = [];
     this.isSelectAll = false;
-    // this.inputFns.onClickHandler(this.heading, this.arr);
+    this.inputFns.inputFns.onClickHandler(this.heading, this.arr);
     this.clearSearch();
     this.cartservice.clearAll.next(false);
-  }
+  };
 
+  // select all functionality for filters but needs to changes from backend api to work this functionality properly
   selectAll() {
-    // this.clearCheckboxes();
-
     if (this.isSelectAll) {
       for (let i = 0; i < this.resultArr.length; i++) {
         let index = this.arr.indexOf(this.resultArr[i]["title"]);
@@ -118,19 +105,20 @@ export class FilterTypeComponent implements OnInit {
     }
   }
 
-  clear = () => {
-    this.clearAll();
-  };
-
   render = (i) => {
     if (i < 5) return true;
     return false;
   };
 
-  onClickHandler(id, value) {
-    console.log(id);
-    console.log(value);
+  // this function shows filter tag when click on filter
+  fetchData() {
+    if (this.heading === "BRAND" || "COLOUR" || "PRICE") {
+      this.inputFns.inputFns.onClickHandler(this.heading, this.arr);
+    }
+  }
 
+  // this logic call when click on seperate filter to get checkbox value
+  onClickHandler(id, value) {
     if (value) {
       if (this.arr.indexOf(id) != -1) {
         return;
@@ -140,6 +128,7 @@ export class FilterTypeComponent implements OnInit {
         console.log(this.arr);
       }
     } else if (!value) {
+      console.log("deselect");
       if (this.arr.indexOf(id) != -1) {
         let index = this.arr.indexOf(id);
         this.arr.splice(index, 1);
@@ -148,14 +137,16 @@ export class FilterTypeComponent implements OnInit {
         return;
       }
     }
-
+    this.fetchData();
   }
 
+  // this api call to get filter result when click on checkbox
   onFilterTitle() {
+    this.spinner.show();
     let dataObjId = this.arr;
-    this.cartservice._searchProductsByName(dataObjId).subscribe((res)=> {
+    this.cartservice._searchProductsByName(dataObjId).subscribe((res) => {
+      this.spinner.hide();
       console.log(res);
     });
   }
-
 }

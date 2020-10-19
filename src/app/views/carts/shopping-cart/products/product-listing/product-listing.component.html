@@ -1,3 +1,14 @@
+<!-- Remove chip filter section starts from here -->
+<div class="contHdr2">
+    <div class="space">
+        <div class="filterChip" *ngFor="let filter of inputFns.selectedArr">
+            <p>{{filter}}</p>
+            <span (click)="removeChipFilter(filter)"><i class="fa fa-times cross" aria-hidden="true"></i></span>
+        </div>
+    </div>
+</div>
+
+<!-- Product listing section starts from here -->
 <section class="product-listing">
     <ul class="product-listing__cards cards-item-grid">
         <!-- This block shows by default existing products -->
@@ -5,7 +16,7 @@
             <li class="product-listing__cards-item" *ngFor="let data of results">
                 <div class="product-listing__card">
                     <!-- Card image section starts from here -->
-                    <div class="image-wrapper" routerLink="/sCart/product-detail/{{data.id}}">
+                    <div class="image-wrapper" routerLink="/product-detail/{{data.id}}">
                         <img src="{{data ? data.image : ''}}"
                             onerror="this.onerror=null; this.src='assets/images/no_image_available_for_cat.png'">
                         <div class="discount"><span>{{data.discount}}&#37;</span></div>
@@ -25,10 +36,6 @@
 
                     </div>
                 </div>
-                <!-- Loader starts from here -->
-                <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
-                    <p class="white">Please Wait.</p>
-                </ngx-spinner>
             </li>
         </ng-template>
 
@@ -37,7 +44,7 @@
             <li class="product-listing__cards-item" *ngFor="let data of searchResults">
                 <div class="product-listing__card">
                     <!-- Card image section starts from here -->
-                    <div class="image-wrapper" routerLink="/sCart/product-detail/{{data.id}}">
+                    <div class="image-wrapper" routerLink="/product-detail/{{data.id}}">
                         <img src="{{data ? data.image : ''}}"
                             onerror="this.onerror=null; this.src='assets/images/no_image_available_for_cat.png'">
                         <div class="discount"><span>{{data.discount}}&#37;</span></div>
@@ -57,22 +64,14 @@
 
                     </div>
                 </div>
-                <!-- Loader starts from here -->
-                <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
-                    <p class="white">Please Wait.</p>
-                </ngx-spinner>
             </li>
         </ng-container>
-
-        <!-- <div class="suggestion" 
-     *ngIf="searchArrLength === 0">
-     <h1> No results found </h1>
-</div> -->
     </ul>
 
-    <div class="notFound" *ngIf="!searchArrLength">
+    <!-- no result found section starts from here -->
+    <!-- <div class="notFound" *ngIf="!searchArrLength">
         <img src="assets/images/no-result.png" alt="No Results Found">
         <p class="text1">No Matching Results Found!</p>
         <p class="text2">Please check the spelling or try searching something else</p>
-      </div>
+    </div> -->
 </section>

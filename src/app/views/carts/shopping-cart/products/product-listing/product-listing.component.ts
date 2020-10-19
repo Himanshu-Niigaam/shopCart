@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { SCartService } from "../../../../../core/services/s-cart.service";
 import { NgxSpinnerService } from "ngx-spinner";
 import { Subscription } from "rxjs";
@@ -16,6 +16,8 @@ export class ProductListingComponent implements OnInit {
   prodArrLength: any;
   prodId: any;
   subscription: Subscription;
+  @Input() inputFns;
+  @Input() filters;
 
   constructor(
     private cartservice: SCartService,
@@ -28,7 +30,7 @@ export class ProductListingComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.productListing();
   }
 
@@ -47,7 +49,11 @@ export class ProductListingComponent implements OnInit {
     });
   }
 
-  // Destroy subscriber
+  removeChipFilter = (filter) => {
+    this.filters.removeChipFilter(filter);
+  };
+
+  // Destroy subscription to avoid memory leak
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

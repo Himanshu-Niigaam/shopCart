@@ -70,7 +70,6 @@ export class SCartService {
     let requestOptions = { headers: headerOptions };
     return this.http
       .get<any>(API.PRODUCTS, requestOptions)
-      .pipe(retry(1), catchError(this.handleError));
   }
 
   // This service is for to get detail for specific product with their unique id
@@ -118,7 +117,7 @@ export class SCartService {
         this.price.next(response[2].values);
         return (this.searchResults = response["results"]);
       })
-    );;
+    );
   }
 
   // getSearchResult(title: any): Observable<any> {

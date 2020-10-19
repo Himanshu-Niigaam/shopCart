@@ -7,7 +7,6 @@ import { ProductsComponent } from "./products/products.component";
 import { FiltersComponent } from "./products/filters/filters.component";
 import { FilterPipe } from "./pipes/filter.pipe";
 import { FilterShowMorePipe } from "./pipes/filter-show-more.pipe";
-import { NgxSpinnerModule } from "ngx-spinner";
 import { ProductDetailComponent } from "../product-detail/product-detail.component";
 import { FilterTypeComponent } from './products/filters/filter-type/filter-type.component';
 import { FilterListComponent } from './products/filters/filter-type/filter-list/filter-list.component';
@@ -27,7 +26,6 @@ import { FilterListComponent } from './products/filters/filter-type/filter-list/
     CommonModule,
     FormsModule,
     ShoppingCartRoutingModule,
-    NgxSpinnerModule,
   ],
 })
 export class ShoppingCartModule {}

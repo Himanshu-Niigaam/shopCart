@@ -2,12 +2,12 @@
     <div class="row">
         <!-- Filter selector include here -->
         <div class="col-3">
-            <app-filters #filters [inputFns]="this"></app-filters>
+            <app-filters #filters [inputFns]="this" [content]="content"></app-filters>
         </div>
 
         <!-- Product list selector include here -->
         <div class="col-9">
-            <app-product-listing></app-product-listing>
+            <app-product-listing #content [inputFns]="this" [filters]="filters"></app-product-listing>
         </div>
     </div>
 </section>

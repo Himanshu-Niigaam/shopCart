@@ -33,7 +33,16 @@ h1 {
 .error-msg {
   @include padding-top(10px);
   width: 95%;
-  color: $light;
+  color: $primary;
+
+  span {
+    background: $light;
+    @include padding(2px 5px);
+    @include font-size(11px);
+    @include letter-spacing(0.3px);
+    font-weight: 600;
+  }
+    
 }
 
 .submit_btn {
@@ -82,6 +91,10 @@ h1 {
   background-color: #464646;
   flex: 1;
   @include padding(16px);
+  @media #{$tablet-only} {
+    background-color: #FCECCC;
+    background-size: contain;
+  }
 }
 
 .right-half {
@@ -89,8 +102,17 @@ h1 {
   flex: 1;
   @include padding(16px);
   justify-content: center;
+  @media #{$tablet-only} { 
+    justify-content: normal;
+  }
 }
 
 .white {
   color: $light;
+}
+
+article {
+  @media #{$tablet-only} {
+    margin-top: 57%;
+  }
 }

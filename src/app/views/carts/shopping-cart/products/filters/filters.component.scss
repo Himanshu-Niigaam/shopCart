@@ -3,10 +3,10 @@
 .filter-wrap {
   background-color: $light;
   border: 1px solid $light-grey;
-  margin-bottom: 10px;
+  @include margin-bottom(10px);
   float: left;
   width: 100%;
-  border-radius: 5px;
+  @include border-radius(5px);
 }
 
 .b-bottom {
@@ -19,21 +19,27 @@
 }
 
 .name-listing {
-  padding: 10px 15px;
+  @include padding(10px 15px);
   display: flex;
   flex-direction: column;
+  @media #{$tablet-only} {
+    @include font-size(12px);
+  }
 }
-
 
 .clear-all {
   color: $gray-dark;
   @include letter-spacing(0.26px);
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 25px;
-  padding: 6px 15px;
+  @include font-size(12px);
+  @include line-height(25px);
+  @include padding(6px 15px);
   cursor: pointer;
+
+  @media #{$tablet-only} {
+    @include letter-spacing(0);
+    @include font-size(11px);
+    @include line-height(20px);
+  }
 }
-
-

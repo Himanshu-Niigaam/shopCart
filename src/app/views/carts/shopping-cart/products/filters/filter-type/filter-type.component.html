@@ -1,38 +1,46 @@
 <div class="list">
-    <div class="fltrTp">
-      <p class="clrdrk" (click)="expandFn()">
-        <strong>{{ heading }}</strong></p>
-      <div *ngIf="!search" class="search" (click)="onSearch()">
-        <i class="fa fa-search srch" aria-hidden="true"></i>
-      </div>
+  <!-- filter heading and search icon section starts fro here -->
+  <div class="filter-wrap">
+    <p class="expand-icon" (click)="expandFn()">
+      <strong>{{ heading }}</strong></p>
+    <div *ngIf="!search" class="search-icon" (click)="onSearch()">
+      <i class="fa fa-search srch" aria-hidden="true"></i>
     </div>
-    <div class="expand" *ngIf="expand">
-      <ng-container *ngIf="filterList | filter: searchText as result">
-        <div class="flex" *ngIf="search">
-          <input type="text" [(ngModel)]="searchText" (keyup)="onKey($event, result)" class="form-control"
-            placeholder="Search" #search />
-          <span class="cross" (click)="clearSearch()">&times;</span>
+  </div>
+
+  <!-- seperate filter list and collapse section starts from here -->
+  <div *ngIf="expand">
+    <ng-container *ngIf="filterList | filter: searchText as result">
+      <!-- show searchbox on click of search icon -->
+      <div class="flex-wrap" *ngIf="search">
+        <input type="text" [(ngModel)]="searchText" class="search-control" placeholder="Search" #search />
+        <span class="cross" (click)="clearSearch()">&times;</span>
+      </div>
+
+      <!-- checkbox, select all text and clear filter starts from here  -->
+      <div class="selectall-wrap" *ngIf="result.length">
+        <div>
+          <input type="checkbox" [checked]="isSelectAll" (change)="selectAll()" />
+          <p class="hyperlk" (click)="selectAll()">Select All</p>
         </div>
-        <div class="selectAll" *ngIf="result.length">
-          <div>
-            <input class="select-all" type="checkbox" [checked]="isSelectAll" (change)="selectAll()" />
-            <p class="hyperlk col1" (click)="selectAll()">Select All</p>
-          </div>
-          <p *ngIf="arr.length > 0" class="hyperlk col2" (click)="clear()">Clear</p>
-        </div>
-        <div class="fltrList">
-          <ng-container *ngFor="let item of result; let i = index;">
-            <app-filter-list *ngIf="render(i)" [item]="item" [inputFns]="this"></app-filter-list>
-          </ng-container>
-        </div>
-        <!-- <div class="more">
+        <p *ngIf="arr.length > 0" class="hyperlk" (click)="clearAll()">Clear</p>
+      </div>
+
+      <!-- filter list componenet include here -->
+      <div class="filter-list-wrap">
+        <ng-container *ngFor="let item of result; let i = index;">
+          <app-filter-list *ngIf="render(i)" [item]="item" [inputFns]="this"></app-filter-list>
+        </ng-container>
+      </div>
+
+      <!-- show more section starts from here -->
+      <!-- <div class="more">
           <ng-container *ngIf="result | filterShowMore ">
             <p class="hyperlk">+
               {{result | filterShowMore}}
               more</p>
           </ng-container>
         </div> -->
-      </ng-container>
-    </div>
+    </ng-container>
   </div>
-  
+</div>

@@ -1,14 +1,12 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
 import { Observable } from "rxjs";
 import { SCartService } from "../../../../../core/services/s-cart.service";
-import { FilterPipe } from '../../pipes/filter.pipe';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FilterTypeComponent } from '../filters/filter-type/filter-type.component';
+import { FilterTypeComponent } from "../filters/filter-type/filter-type.component";
 
 @Component({
-  selector: 'app-filters',
-  templateUrl: './filters.component.html',
-  styleUrls: ['./filters.component.scss']
+  selector: "app-filters",
+  templateUrl: "./filters.component.html",
+  styleUrls: ["./filters.component.scss"],
 })
 export class FiltersComponent implements OnInit {
   @Input() inputFns;
@@ -23,19 +21,29 @@ export class FiltersComponent implements OnInit {
 
   clearAllText$: Observable<any>;
 
-  constructor(
-    private cartservice: SCartService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  constructor(private cartservice: SCartService) {}
 
   ngOnInit() {
     this.clearAllText$ = this.cartservice.clearAll.pipe();
   }
 
-  clearAll = (clear) => {
+  // this function clear filters
+  clearAll() {
     this.child1.clearAll();
     this.child2.clearAll();
     this.child3.clearAll();
+  }
+
+  // this function removes selector filter tag
+  removeChipFilter(heading) {
+    if (heading === "BRAND") {
+      this.child1.clearAll();
+    }
+    if (heading === "COLOUR") {
+      this.child2.clearAll();
+    }
+    if (heading === "PRICE") {
+      this.child3.clearAll();
+    }
   }
 }
