@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NgxSpinnerService } from "ngx-spinner";
 import { SCartService } from "../../../core/services/s-cart.service";
 import { SnackbarService } from "../../../shared/snackbar/snackbar.service";
-import { MESSAGES } from '../../../../app/utils/message-constant';
+import { MESSAGES } from "../../../../app/utils/message-constant";
 
 @Component({
   selector: "app-login",
@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: ["", Validators.required],
+      password: ["", Validators.required],
     });
   }
 
@@ -55,12 +55,9 @@ export class LoginComponent implements OnInit {
     this.spinner.show();
     this.cartservice
       .login(this.f.username.value, this.f.password.value)
-      .pipe(
-        tap((resData) => console.log("users array", resData)) 
-      )
+      .pipe(tap((resData) => console.log("users array", resData)))
       .subscribe(
         (resData) => {
-          console.log(resData);
           this.spinner.hide();
           this.result = resData;
           let name = this.f.username.value;
@@ -72,8 +69,8 @@ export class LoginComponent implements OnInit {
             return obj.password === pass;
           });
           if (objName && objPassword) {
-            this.SnackbarService.show(MESSAGES.shoppingCart.SUCCESS);
             this.router.navigate(["sCart"]);
+            this.SnackbarService.show(MESSAGES.shoppingCart.SUCCESS);
             localStorage.setItem("user_detail", JSON.stringify(resData));
           } else {
             this.SnackbarService.show(MESSAGES.shoppingCart.FAILURE);
@@ -82,7 +79,6 @@ export class LoginComponent implements OnInit {
         (errRes) => {
           this.spinner.hide();
           this.SnackbarService.show(MESSAGES.shoppingCart.FAILURE);
-          console.log(errRes);
         }
       );
   }

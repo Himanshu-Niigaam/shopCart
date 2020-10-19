@@ -86,20 +86,6 @@ export class SCartService {
       .pipe(retry(1), catchError(this.handleError));
   }
 
-  // This service is for to get data from server from searchbar
-  getProductsBySearch(title: any) {
-    let headerOptions = new HttpHeaders({
-      "Content-Type": "application/json",
-      "Cache-Control": "no-cache",
-      Pragma: "no-cache",
-      Expires: "0",
-    });
-    let requestOptions = { headers: headerOptions };
-    return this.http
-      .get<any>(API.PRODUCTS + "?title=" + title)
-      .pipe(retry(1), catchError(this.handleError));
-  }
-
   // This service is for to get filter data from server
   getFilters() {
     let headerOptions = new HttpHeaders({
@@ -111,20 +97,13 @@ export class SCartService {
     let requestOptions = { headers: headerOptions };
     return this.http.get(API.FILTERS, requestOptions).pipe(
       map((response: any) => {
-        console.log(response);
+        console.log(response)
         this.brands.next(response[0].values);
         this.colors.next(response[1].values);
         this.price.next(response[2].values);
-        return (this.searchResults = response["results"]);
       })
     );
   }
-
-  // getSearchResult(title: any): Observable<any> {
-  //   return this.http
-  //     .get(API.PRODUCTS + "?title=" + title)
-  //     .pipe(retry(1), catchError(this.handleError));
-  // }
 
   public getResults$() {
     return this.searchTerm.asObservable()
@@ -137,7 +116,6 @@ export class SCartService {
     } else {
       return this.http.get<any>(API.PRODUCTS + "?title=" + term).pipe(
         map((response) => {
-          console.log(response);
           this.searchTerm.next(response);
           return (this.searchResults = response["results"]);
         })
@@ -146,7 +124,7 @@ export class SCartService {
   }
 
   // This function is used to call search products by name
-  public _searchProductsByName(term) {
+  public searchProductsByName(term) {
     return this.searchProducts(term);
   }
 

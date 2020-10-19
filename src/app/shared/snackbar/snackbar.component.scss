@@ -6,17 +6,12 @@
   left: 15%;
   @include border-radius(5px);
   min-width: 26%;
-  transform-origin: center center;
+  // transform-origin: center center;
   transform: translate(-50%, 0%);
-  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.302),
-    0 4px 8px 3px rgba(60, 64, 67, 0.149);
   @include padding(20px 0);
   @include letter-spacing(0.3px);
   &.success {
     background: $snackbar-bg;
-  }
-  &.danger {
-    background: rgb(173, 35, 0);
   }
   .snackbar-text {
     @include font-size(14px);

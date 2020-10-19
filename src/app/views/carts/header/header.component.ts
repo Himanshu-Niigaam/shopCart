@@ -22,8 +22,6 @@ export class HeaderComponent implements OnInit {
   fullname: any;
   isDropdownOpen = false;
   public searchTerm = new Subject<string>();
-  public searchResults: any;
-  public storeData: any;
   public errorMessage: any;
 
   constructor(
@@ -66,23 +64,18 @@ export class HeaderComponent implements OnInit {
         debounceTime(400),
         distinctUntilChanged(),
         switchMap((term) => {
-          console.log(term);
           this.spinnerservice.show();
-          return this.cartservice._searchProductsByName(term);
+          return this.cartservice.searchProductsByName(term);
         }),
         catchError((e) => {
           console.log(e);
           this.spinnerservice.hide();
           this.errorMessage = e.message;
-          console.log(this.errorMessage);
           return throwError(e);
         })
       )
       .subscribe((resData) => {
-        console.log(resData);
         this.spinnerservice.hide();
-        this.searchResults = resData;
-        this.storeData = this.searchResults;
       });
   }
 

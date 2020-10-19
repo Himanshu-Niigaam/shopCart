@@ -61,30 +61,14 @@
 
 form.search input[type="text"] {
   @include padding(10px);
-  @include font-size(16px);
+  @include font-size(15px);
   border: 1px solid $light-grey;
   float: left;
-  width: 82%;
+  width: 100%;
   background: $light;
-  @include border-radius(5px 0 0 5px);
+  @include border-radius(5px);
   &:focus {
     outline: none;
-  }
-}
-
-form.search button {
-  @include font-size(16px);
-  @include border-radius(0 5px 5px 0);
-  float: left;
-  width: 12%;
-  @include padding(10px);
-  background: $bg-grey;
-  color: $light;
-  border: 1px solid $light-grey;
-  border-left: none;
-  cursor: pointer;
-  @media #{$tablet-only} { 
-    width: 18%;
   }
 }
 

@@ -125,14 +125,11 @@ export class FilterTypeComponent implements OnInit {
       } else {
         this.arr.push(id);
         this.onFilterTitle();
-        console.log(this.arr);
       }
     } else if (!value) {
-      console.log("deselect");
       if (this.arr.indexOf(id) != -1) {
         let index = this.arr.indexOf(id);
         this.arr.splice(index, 1);
-        console.log(this.arr);
       } else {
         return;
       }
@@ -144,9 +141,8 @@ export class FilterTypeComponent implements OnInit {
   onFilterTitle() {
     this.spinner.show();
     let dataObjId = this.arr;
-    this.cartservice._searchProductsByName(dataObjId).subscribe((res) => {
+    this.cartservice.searchProductsByName(dataObjId).subscribe((res) => {
       this.spinner.hide();
-      console.log(res);
     });
   }
 }
